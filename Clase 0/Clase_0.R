@@ -46,4 +46,13 @@ mean(DB_alturas$crecimiento)
 
 # Restricciones -----------------------------------------------------------
 sum(DB_alturas$crecimiento < mean(DB_alturas$crecimiento))
-TratA <- DB_alturas[(DB_alturas$tratamiento == "TA"),]
+TratA <- DB_alturas[!(DB_alturas$tratamiento == "TA"),]
+
+mean(TratA$crecimiento)
+
+
+
+# Sumbmuetra --------------------------------------------------------------
+
+T.mean <- subset(DB_alturas,crecimiento >= mean(DB_alturas$crecimiento))
+boxplot(T.mean$crecimiento ~ T.mean$tratamiento)
